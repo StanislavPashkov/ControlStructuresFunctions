@@ -8,7 +8,7 @@ const val ERROR_LIMIT = -2
 //const val MAX_MONTHLY_TRANSFER_VK = 40_000
 
 fun main() {
-    println(commissionCalculate(cardType = "MasterCard", amount = 1000000))
+    println(commissionCalculate(cardType = "MasterCard",50000 ,amount = 20000))
 
 }
 
@@ -19,7 +19,7 @@ fun commissionCalculate(cardType: String = "VK Pay", monthlyTransfers: Int = 0, 
 
 
         "Maestro", "MasterCard" -> if (amount <= 150_000 && amount + monthlyTransfers <= 600_000)
-            if (amount > 75000) (0.006 * amount + 20).toInt() else 0
+            if ((amount + monthlyTransfers> 75000) || (amount > 75000)) (0.006 * amount + 20).toInt() else 0
         else ERROR_LIMIT
 
 
